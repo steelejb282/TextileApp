@@ -29,12 +29,17 @@
         private void InitializeComponent()
         {
             this.mess1 = new System.Windows.Forms.Label();
-            this.mess2 = new System.Windows.Forms.Label();
             this.mess3 = new System.Windows.Forms.Label();
             this.mess4 = new System.Windows.Forms.Label();
             this.mess5 = new System.Windows.Forms.Label();
             this.mess6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.runBut = new System.Windows.Forms.Button();
+            this.error1 = new System.Windows.Forms.Label();
+            this.jobSel = new System.Windows.Forms.TextBox();
+            this.JobTable = new System.Windows.Forms.CheckedListBox();
+            this.delButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.error2 = new System.Windows.Forms.Label();
             this.shiftSel = new System.Windows.Forms.TextBox();
@@ -51,37 +56,20 @@
             this.screen1 = new System.Windows.Forms.Label();
             this.print1 = new System.Windows.Forms.Label();
             this.machineList = new System.Windows.Forms.CheckedListBox();
-            this.error1 = new System.Windows.Forms.Label();
-            this.outDisp = new System.Windows.Forms.Label();
-            this.jobSel = new System.Windows.Forms.TextBox();
-            this.jobList = new System.Windows.Forms.ListBox();
-            this.addButton = new System.Windows.Forms.Button();
-            this.delButton = new System.Windows.Forms.Button();
-            this.runBut = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // mess1
             // 
-            this.mess1.AutoSize = true;
             this.mess1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.mess1.Location = new System.Drawing.Point(25, 25);
+            this.mess1.Location = new System.Drawing.Point(11, 8);
             this.mess1.Name = "mess1";
-            this.mess1.Size = new System.Drawing.Size(501, 37);
+            this.mess1.Size = new System.Drawing.Size(507, 84);
             this.mess1.TabIndex = 0;
             this.mess1.Tag = "mess1";
             this.mess1.Text = "Select a product to produce (A-Z):";
-            // 
-            // mess2
-            // 
-            this.mess2.AutoSize = true;
-            this.mess2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.mess2.Location = new System.Drawing.Point(295, 90);
-            this.mess2.Name = "mess2";
-            this.mess2.Size = new System.Drawing.Size(123, 37);
-            this.mess2.TabIndex = 7;
-            this.mess2.Text = "Output:";
             // 
             // mess3
             // 
@@ -124,10 +112,80 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.runBut);
+            this.panel1.Controls.Add(this.error1);
+            this.panel1.Controls.Add(this.jobSel);
+            this.panel1.Controls.Add(this.JobTable);
+            this.panel1.Controls.Add(this.delButton);
+            this.panel1.Controls.Add(this.mess1);
+            this.panel1.Controls.Add(this.addButton);
             this.panel1.Location = new System.Drawing.Point(15, 15);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(545, 685);
+            this.panel1.Size = new System.Drawing.Size(459, 580);
             this.panel1.TabIndex = 9;
+            // 
+            // runBut
+            // 
+            this.runBut.Location = new System.Drawing.Point(272, 480);
+            this.runBut.Name = "runBut";
+            this.runBut.Size = new System.Drawing.Size(169, 75);
+            this.runBut.TabIndex = 12;
+            this.runBut.Text = "Run";
+            this.runBut.UseVisualStyleBackColor = true;
+            this.runBut.Click += new System.EventHandler(this.runBut_Click);
+            // 
+            // error1
+            // 
+            this.error1.AutoSize = true;
+            this.error1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.error1.ForeColor = System.Drawing.Color.Red;
+            this.error1.Location = new System.Drawing.Point(8, 146);
+            this.error1.Name = "error1";
+            this.error1.Size = new System.Drawing.Size(364, 37);
+            this.error1.TabIndex = 1;
+            this.error1.Text = "Error: Please select A-Z.";
+            this.error1.Visible = false;
+            // 
+            // jobSel
+            // 
+            this.jobSel.Location = new System.Drawing.Point(184, 63);
+            this.jobSel.Name = "jobSel";
+            this.jobSel.Size = new System.Drawing.Size(246, 44);
+            this.jobSel.TabIndex = 3;
+            this.jobSel.Tag = "input";
+            this.jobSel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // JobTable
+            // 
+            this.JobTable.FormattingEnabled = true;
+            this.JobTable.Location = new System.Drawing.Point(15, 200);
+            this.JobTable.Name = "JobTable";
+            this.JobTable.Size = new System.Drawing.Size(240, 355);
+            this.JobTable.TabIndex = 1;
+            this.JobTable.SelectedIndexChanged += new System.EventHandler(this.JobTable_SelectedIndexChanged);
+            // 
+            // delButton
+            // 
+            this.delButton.Enabled = false;
+            this.delButton.Location = new System.Drawing.Point(272, 281);
+            this.delButton.Name = "delButton";
+            this.delButton.Size = new System.Drawing.Size(169, 75);
+            this.delButton.TabIndex = 6;
+            this.delButton.Tag = "delBut";
+            this.delButton.Text = "Delete";
+            this.delButton.UseVisualStyleBackColor = true;
+            this.delButton.Click += new System.EventHandler(this.delButton_Click);
+            // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(272, 200);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(169, 75);
+            this.addButton.TabIndex = 5;
+            this.addButton.Tag = "addBut";
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // panel2
             // 
@@ -136,7 +194,7 @@
             this.panel2.Controls.Add(this.error2);
             this.panel2.Controls.Add(this.shiftSel);
             this.panel2.Controls.Add(this.mess3);
-            this.panel2.Location = new System.Drawing.Point(575, 15);
+            this.panel2.Location = new System.Drawing.Point(490, 15);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(545, 185);
             this.panel2.TabIndex = 10;
@@ -180,9 +238,9 @@
             this.panel3.Controls.Add(this.mess5);
             this.panel3.Controls.Add(this.machineList);
             this.panel3.Controls.Add(this.mess4);
-            this.panel3.Location = new System.Drawing.Point(575, 215);
+            this.panel3.Location = new System.Drawing.Point(490, 217);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(545, 480);
+            this.panel3.Size = new System.Drawing.Size(545, 378);
             this.panel3.TabIndex = 11;
             // 
             // error3
@@ -299,109 +357,26 @@
             "Machine 5"});
             this.machineList.Location = new System.Drawing.Point(7, 96);
             this.machineList.Name = "machineList";
-            this.machineList.Size = new System.Drawing.Size(250, 234);
+            this.machineList.Size = new System.Drawing.Size(229, 234);
             this.machineList.TabIndex = 1;
-            // 
-            // error1
-            // 
-            this.error1.AutoSize = true;
-            this.error1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.error1.ForeColor = System.Drawing.Color.Red;
-            this.error1.Location = new System.Drawing.Point(25, 150);
-            this.error1.Name = "error1";
-            this.error1.Size = new System.Drawing.Size(364, 37);
-            this.error1.TabIndex = 1;
-            this.error1.Text = "Error: Please select A-Z.";
-            this.error1.Visible = false;
-            // 
-            // outDisp
-            // 
-            this.outDisp.AutoSize = true;
-            this.outDisp.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.outDisp.Location = new System.Drawing.Point(425, 90);
-            this.outDisp.Name = "outDisp";
-            this.outDisp.Size = new System.Drawing.Size(27, 37);
-            this.outDisp.TabIndex = 2;
-            this.outDisp.Tag = "outDisp";
-            this.outDisp.Text = "-";
-            // 
-            // jobSel
-            // 
-            this.jobSel.Location = new System.Drawing.Point(35, 80);
-            this.jobSel.Name = "jobSel";
-            this.jobSel.Size = new System.Drawing.Size(246, 44);
-            this.jobSel.TabIndex = 3;
-            this.jobSel.Tag = "input";
-            this.jobSel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // jobList
-            // 
-            this.jobList.FormattingEnabled = true;
-            this.jobList.ItemHeight = 37;
-            this.jobList.Location = new System.Drawing.Point(35, 200);
-            this.jobList.Name = "jobList";
-            this.jobList.Size = new System.Drawing.Size(500, 374);
-            this.jobList.TabIndex = 4;
-            this.jobList.Tag = "jobList";
-            // 
-            // addButton
-            // 
-            this.addButton.Location = new System.Drawing.Point(35, 600);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(245, 75);
-            this.addButton.TabIndex = 5;
-            this.addButton.Tag = "addBut";
-            this.addButton.Text = "Add";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // delButton
-            // 
-            this.delButton.Enabled = false;
-            this.delButton.Location = new System.Drawing.Point(300, 600);
-            this.delButton.Name = "delButton";
-            this.delButton.Size = new System.Drawing.Size(245, 75);
-            this.delButton.TabIndex = 6;
-            this.delButton.Tag = "delBut";
-            this.delButton.Text = "Delete";
-            this.delButton.UseVisualStyleBackColor = true;
-            // 
-            // runBut
-            // 
-            this.runBut.Location = new System.Drawing.Point(595, 600);
-            this.runBut.Name = "runBut";
-            this.runBut.Size = new System.Drawing.Size(515, 75);
-            this.runBut.TabIndex = 12;
-            this.runBut.Text = "Run";
-            this.runBut.UseVisualStyleBackColor = true;
-            this.runBut.Click += new System.EventHandler(this.runBut_Click);
             // 
             // baseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1099, 713);
-            this.Controls.Add(this.runBut);
+            this.ClientSize = new System.Drawing.Size(1054, 610);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.mess2);
-            this.Controls.Add(this.delButton);
-            this.Controls.Add(this.addButton);
-            this.Controls.Add(this.jobList);
-            this.Controls.Add(this.jobSel);
-            this.Controls.Add(this.outDisp);
-            this.Controls.Add(this.error1);
-            this.Controls.Add(this.mess1);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "baseForm";
             this.Text = "Textile Management";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -426,12 +401,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label mess1;
         private System.Windows.Forms.Label error1;
-        private System.Windows.Forms.Label outDisp;
         private System.Windows.Forms.TextBox jobSel;
-        private System.Windows.Forms.ListBox jobList;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button delButton;
-        private System.Windows.Forms.Label mess2;
         private System.Windows.Forms.Label mess3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -454,6 +426,7 @@
         private System.Windows.Forms.Label screen1;
         private System.Windows.Forms.Label print1;
         private System.Windows.Forms.Label error3;
+        private System.Windows.Forms.CheckedListBox JobTable;
     }
 }
 
