@@ -47,6 +47,17 @@
             this.machineList = new System.Windows.Forms.CheckedListBox();
             this.mess5 = new System.Windows.Forms.Label();
             this.mess6 = new System.Windows.Forms.Label();
+            this.print1 = new System.Windows.Forms.Label();
+            this.screen1 = new System.Windows.Forms.Label();
+            this.print2 = new System.Windows.Forms.Label();
+            this.screen2 = new System.Windows.Forms.Label();
+            this.print3 = new System.Windows.Forms.Label();
+            this.screen3 = new System.Windows.Forms.Label();
+            this.print4 = new System.Windows.Forms.Label();
+            this.screen4 = new System.Windows.Forms.Label();
+            this.print5 = new System.Windows.Forms.Label();
+            this.screen5 = new System.Windows.Forms.Label();
+            this.error3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -190,6 +201,17 @@
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.error3);
+            this.panel3.Controls.Add(this.screen5);
+            this.panel3.Controls.Add(this.print5);
+            this.panel3.Controls.Add(this.screen4);
+            this.panel3.Controls.Add(this.print4);
+            this.panel3.Controls.Add(this.screen3);
+            this.panel3.Controls.Add(this.print3);
+            this.panel3.Controls.Add(this.screen2);
+            this.panel3.Controls.Add(this.print2);
+            this.panel3.Controls.Add(this.screen1);
+            this.panel3.Controls.Add(this.print1);
             this.panel3.Controls.Add(this.mess6);
             this.panel3.Controls.Add(this.mess5);
             this.panel3.Controls.Add(this.machineList);
@@ -220,7 +242,7 @@
             // machineList
             // 
             this.machineList.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.machineList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.machineList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.machineList.FormattingEnabled = true;
             this.machineList.Items.AddRange(new object[] {
             "Machine 1",
@@ -228,9 +250,9 @@
             "Machine 3",
             "Machine 4",
             "Machine 5"});
-            this.machineList.Location = new System.Drawing.Point(3, 96);
+            this.machineList.Location = new System.Drawing.Point(7, 96);
             this.machineList.Name = "machineList";
-            this.machineList.Size = new System.Drawing.Size(525, 236);
+            this.machineList.Size = new System.Drawing.Size(250, 234);
             this.machineList.TabIndex = 1;
             // 
             // mess5
@@ -251,12 +273,115 @@
             this.mess6.TabIndex = 3;
             this.mess6.Text = "Screen";
             // 
+            // print1
+            // 
+            this.print1.Location = new System.Drawing.Point(255, 100);
+            this.print1.Name = "print1";
+            this.print1.Size = new System.Drawing.Size(100, 37);
+            this.print1.TabIndex = 4;
+            this.print1.Text = "-";
+            this.print1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // screen1
+            // 
+            this.screen1.Location = new System.Drawing.Point(383, 100);
+            this.screen1.Name = "screen1";
+            this.screen1.Size = new System.Drawing.Size(100, 37);
+            this.screen1.TabIndex = 5;
+            this.screen1.Text = "-";
+            this.screen1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // print2
+            // 
+            this.print2.Location = new System.Drawing.Point(255, 143);
+            this.print2.Name = "print2";
+            this.print2.Size = new System.Drawing.Size(100, 37);
+            this.print2.TabIndex = 6;
+            this.print2.Text = "-";
+            this.print2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // screen2
+            // 
+            this.screen2.Location = new System.Drawing.Point(383, 143);
+            this.screen2.Name = "screen2";
+            this.screen2.Size = new System.Drawing.Size(100, 37);
+            this.screen2.TabIndex = 7;
+            this.screen2.Text = "-";
+            this.screen2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // print3
+            // 
+            this.print3.Location = new System.Drawing.Point(255, 186);
+            this.print3.Name = "print3";
+            this.print3.Size = new System.Drawing.Size(100, 37);
+            this.print3.TabIndex = 8;
+            this.print3.Text = "-";
+            this.print3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.print3.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // screen3
+            // 
+            this.screen3.Location = new System.Drawing.Point(383, 186);
+            this.screen3.Name = "screen3";
+            this.screen3.Size = new System.Drawing.Size(100, 37);
+            this.screen3.TabIndex = 9;
+            this.screen3.Text = "-";
+            this.screen3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // print4
+            // 
+            this.print4.Location = new System.Drawing.Point(255, 229);
+            this.print4.Name = "print4";
+            this.print4.Size = new System.Drawing.Size(100, 37);
+            this.print4.TabIndex = 10;
+            this.print4.Text = "-";
+            this.print4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // screen4
+            // 
+            this.screen4.Location = new System.Drawing.Point(383, 229);
+            this.screen4.Name = "screen4";
+            this.screen4.Size = new System.Drawing.Size(100, 37);
+            this.screen4.TabIndex = 11;
+            this.screen4.Text = "-";
+            this.screen4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // print5
+            // 
+            this.print5.Location = new System.Drawing.Point(255, 270);
+            this.print5.Name = "print5";
+            this.print5.Size = new System.Drawing.Size(100, 37);
+            this.print5.TabIndex = 12;
+            this.print5.Text = "-";
+            this.print5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.print5.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // screen5
+            // 
+            this.screen5.Location = new System.Drawing.Point(383, 270);
+            this.screen5.Name = "screen5";
+            this.screen5.Size = new System.Drawing.Size(100, 37);
+            this.screen5.TabIndex = 13;
+            this.screen5.Text = "-";
+            this.screen5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // error3
+            // 
+            this.error3.AutoSize = true;
+            this.error3.ForeColor = System.Drawing.Color.Red;
+            this.error3.Location = new System.Drawing.Point(10, 325);
+            this.error3.Name = "error3";
+            this.error3.Size = new System.Drawing.Size(460, 37);
+            this.error3.TabIndex = 14;
+            this.error3.Text = "Error: Please select a machine.";
+            this.error3.Visible = false;
+            // 
             // baseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1171, 713);
+            this.ClientSize = new System.Drawing.Size(1099, 713);
             this.Controls.Add(this.runBut);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.mess2);
@@ -318,6 +443,17 @@
         private System.Windows.Forms.Label mess5;
         private System.Windows.Forms.CheckedListBox machineList;
         private System.Windows.Forms.Label mess4;
+        private System.Windows.Forms.Label screen5;
+        private System.Windows.Forms.Label print5;
+        private System.Windows.Forms.Label screen4;
+        private System.Windows.Forms.Label print4;
+        private System.Windows.Forms.Label screen3;
+        private System.Windows.Forms.Label print3;
+        private System.Windows.Forms.Label screen2;
+        private System.Windows.Forms.Label print2;
+        private System.Windows.Forms.Label screen1;
+        private System.Windows.Forms.Label print1;
+        private System.Windows.Forms.Label error3;
     }
 }
 
