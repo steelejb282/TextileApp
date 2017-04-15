@@ -29,35 +29,35 @@
         private void InitializeComponent()
         {
             this.mess1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.mess2 = new System.Windows.Forms.Label();
+            this.mess3 = new System.Windows.Forms.Label();
+            this.mess4 = new System.Windows.Forms.Label();
+            this.mess5 = new System.Windows.Forms.Label();
+            this.mess6 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.error2 = new System.Windows.Forms.Label();
+            this.shiftSel = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.error3 = new System.Windows.Forms.Label();
+            this.screen5 = new System.Windows.Forms.Label();
+            this.print5 = new System.Windows.Forms.Label();
+            this.screen4 = new System.Windows.Forms.Label();
+            this.print4 = new System.Windows.Forms.Label();
+            this.screen3 = new System.Windows.Forms.Label();
+            this.print3 = new System.Windows.Forms.Label();
+            this.screen2 = new System.Windows.Forms.Label();
+            this.print2 = new System.Windows.Forms.Label();
+            this.screen1 = new System.Windows.Forms.Label();
+            this.print1 = new System.Windows.Forms.Label();
+            this.machineList = new System.Windows.Forms.CheckedListBox();
+            this.error1 = new System.Windows.Forms.Label();
             this.outDisp = new System.Windows.Forms.Label();
-            this.valSel = new System.Windows.Forms.TextBox();
+            this.jobSel = new System.Windows.Forms.TextBox();
             this.jobList = new System.Windows.Forms.ListBox();
             this.addButton = new System.Windows.Forms.Button();
             this.delButton = new System.Windows.Forms.Button();
-            this.mess2 = new System.Windows.Forms.Label();
-            this.mess3 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.shiftSel = new System.Windows.Forms.TextBox();
-            this.error2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.runBut = new System.Windows.Forms.Button();
-            this.mess4 = new System.Windows.Forms.Label();
-            this.machineList = new System.Windows.Forms.CheckedListBox();
-            this.mess5 = new System.Windows.Forms.Label();
-            this.mess6 = new System.Windows.Forms.Label();
-            this.print1 = new System.Windows.Forms.Label();
-            this.screen1 = new System.Windows.Forms.Label();
-            this.print2 = new System.Windows.Forms.Label();
-            this.screen2 = new System.Windows.Forms.Label();
-            this.print3 = new System.Windows.Forms.Label();
-            this.screen3 = new System.Windows.Forms.Label();
-            this.print4 = new System.Windows.Forms.Label();
-            this.screen4 = new System.Windows.Forms.Label();
-            this.print5 = new System.Windows.Forms.Label();
-            this.screen5 = new System.Windows.Forms.Label();
-            this.error3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -72,69 +72,6 @@
             this.mess1.TabIndex = 0;
             this.mess1.Tag = "mess1";
             this.mess1.Text = "Select a product to produce (A-Z):";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(25, 150);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(364, 37);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Error: Please select A-Z.";
-            this.label5.Visible = false;
-            // 
-            // outDisp
-            // 
-            this.outDisp.AutoSize = true;
-            this.outDisp.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.outDisp.Location = new System.Drawing.Point(425, 90);
-            this.outDisp.Name = "outDisp";
-            this.outDisp.Size = new System.Drawing.Size(27, 37);
-            this.outDisp.TabIndex = 2;
-            this.outDisp.Tag = "outDisp";
-            this.outDisp.Text = "-";
-            // 
-            // valSel
-            // 
-            this.valSel.Location = new System.Drawing.Point(35, 80);
-            this.valSel.Name = "valSel";
-            this.valSel.Size = new System.Drawing.Size(246, 44);
-            this.valSel.TabIndex = 3;
-            this.valSel.Tag = "input";
-            this.valSel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // jobList
-            // 
-            this.jobList.FormattingEnabled = true;
-            this.jobList.ItemHeight = 37;
-            this.jobList.Location = new System.Drawing.Point(35, 200);
-            this.jobList.Name = "jobList";
-            this.jobList.Size = new System.Drawing.Size(500, 374);
-            this.jobList.TabIndex = 4;
-            this.jobList.Tag = "jobList";
-            // 
-            // addButton
-            // 
-            this.addButton.Location = new System.Drawing.Point(35, 600);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(245, 75);
-            this.addButton.TabIndex = 5;
-            this.addButton.Tag = "addBut";
-            this.addButton.Text = "Add";
-            this.addButton.UseVisualStyleBackColor = true;
-            // 
-            // delButton
-            // 
-            this.delButton.Enabled = false;
-            this.delButton.Location = new System.Drawing.Point(300, 600);
-            this.delButton.Name = "delButton";
-            this.delButton.Size = new System.Drawing.Size(245, 75);
-            this.delButton.TabIndex = 6;
-            this.delButton.Tag = "delBut";
-            this.delButton.Text = "Delete";
-            this.delButton.UseVisualStyleBackColor = true;
             // 
             // mess2
             // 
@@ -155,6 +92,33 @@
             this.mess3.TabIndex = 8;
             this.mess3.Tag = "mess3";
             this.mess3.Text = "State the number of operating shifts (2-5):";
+            // 
+            // mess4
+            // 
+            this.mess4.AutoSize = true;
+            this.mess4.Location = new System.Drawing.Point(10, 10);
+            this.mess4.Name = "mess4";
+            this.mess4.Size = new System.Drawing.Size(470, 37);
+            this.mess4.TabIndex = 0;
+            this.mess4.Text = "Select the machines to be used:";
+            // 
+            // mess5
+            // 
+            this.mess5.AutoSize = true;
+            this.mess5.Location = new System.Drawing.Point(250, 50);
+            this.mess5.Name = "mess5";
+            this.mess5.Size = new System.Drawing.Size(111, 37);
+            this.mess5.TabIndex = 2;
+            this.mess5.Text = "Printer";
+            // 
+            // mess6
+            // 
+            this.mess6.AutoSize = true;
+            this.mess6.Location = new System.Drawing.Point(375, 50);
+            this.mess6.Name = "mess6";
+            this.mess6.Size = new System.Drawing.Size(117, 37);
+            this.mess6.TabIndex = 3;
+            this.mess6.Text = "Screen";
             // 
             // panel1
             // 
@@ -177,14 +141,6 @@
             this.panel2.Size = new System.Drawing.Size(545, 185);
             this.panel2.TabIndex = 10;
             // 
-            // shiftSel
-            // 
-            this.shiftSel.Location = new System.Drawing.Point(237, 63);
-            this.shiftSel.Name = "shiftSel";
-            this.shiftSel.Size = new System.Drawing.Size(235, 44);
-            this.shiftSel.TabIndex = 0;
-            this.shiftSel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // error2
             // 
             this.error2.AutoSize = true;
@@ -196,6 +152,14 @@
             this.error2.Tag = "error2";
             this.error2.Text = "Error: Please select 2-5.";
             this.error2.Visible = false;
+            // 
+            // shiftSel
+            // 
+            this.shiftSel.Location = new System.Drawing.Point(237, 63);
+            this.shiftSel.Name = "shiftSel";
+            this.shiftSel.Size = new System.Drawing.Size(235, 44);
+            this.shiftSel.TabIndex = 0;
+            this.shiftSel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel3
             // 
@@ -221,23 +185,106 @@
             this.panel3.Size = new System.Drawing.Size(545, 480);
             this.panel3.TabIndex = 11;
             // 
-            // runBut
+            // error3
             // 
-            this.runBut.Location = new System.Drawing.Point(595, 600);
-            this.runBut.Name = "runBut";
-            this.runBut.Size = new System.Drawing.Size(515, 75);
-            this.runBut.TabIndex = 12;
-            this.runBut.Text = "Run";
-            this.runBut.UseVisualStyleBackColor = true;
+            this.error3.AutoSize = true;
+            this.error3.ForeColor = System.Drawing.Color.Red;
+            this.error3.Location = new System.Drawing.Point(10, 325);
+            this.error3.Name = "error3";
+            this.error3.Size = new System.Drawing.Size(460, 37);
+            this.error3.TabIndex = 14;
+            this.error3.Text = "Error: Please select a machine.";
+            this.error3.Visible = false;
             // 
-            // mess4
+            // screen5
             // 
-            this.mess4.AutoSize = true;
-            this.mess4.Location = new System.Drawing.Point(10, 10);
-            this.mess4.Name = "mess4";
-            this.mess4.Size = new System.Drawing.Size(470, 37);
-            this.mess4.TabIndex = 0;
-            this.mess4.Text = "Select the machines to be used:";
+            this.screen5.Location = new System.Drawing.Point(383, 270);
+            this.screen5.Name = "screen5";
+            this.screen5.Size = new System.Drawing.Size(100, 37);
+            this.screen5.TabIndex = 13;
+            this.screen5.Text = "-";
+            this.screen5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // print5
+            // 
+            this.print5.Location = new System.Drawing.Point(255, 270);
+            this.print5.Name = "print5";
+            this.print5.Size = new System.Drawing.Size(100, 37);
+            this.print5.TabIndex = 12;
+            this.print5.Text = "-";
+            this.print5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // screen4
+            // 
+            this.screen4.Location = new System.Drawing.Point(383, 229);
+            this.screen4.Name = "screen4";
+            this.screen4.Size = new System.Drawing.Size(100, 37);
+            this.screen4.TabIndex = 11;
+            this.screen4.Text = "-";
+            this.screen4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // print4
+            // 
+            this.print4.Location = new System.Drawing.Point(255, 229);
+            this.print4.Name = "print4";
+            this.print4.Size = new System.Drawing.Size(100, 37);
+            this.print4.TabIndex = 10;
+            this.print4.Text = "-";
+            this.print4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // screen3
+            // 
+            this.screen3.Location = new System.Drawing.Point(383, 186);
+            this.screen3.Name = "screen3";
+            this.screen3.Size = new System.Drawing.Size(100, 37);
+            this.screen3.TabIndex = 9;
+            this.screen3.Text = "-";
+            this.screen3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // print3
+            // 
+            this.print3.Location = new System.Drawing.Point(255, 186);
+            this.print3.Name = "print3";
+            this.print3.Size = new System.Drawing.Size(100, 37);
+            this.print3.TabIndex = 8;
+            this.print3.Text = "-";
+            this.print3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // screen2
+            // 
+            this.screen2.Location = new System.Drawing.Point(383, 143);
+            this.screen2.Name = "screen2";
+            this.screen2.Size = new System.Drawing.Size(100, 37);
+            this.screen2.TabIndex = 7;
+            this.screen2.Text = "-";
+            this.screen2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // print2
+            // 
+            this.print2.Location = new System.Drawing.Point(255, 143);
+            this.print2.Name = "print2";
+            this.print2.Size = new System.Drawing.Size(100, 37);
+            this.print2.TabIndex = 6;
+            this.print2.Text = "-";
+            this.print2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // screen1
+            // 
+            this.screen1.Location = new System.Drawing.Point(383, 100);
+            this.screen1.Name = "screen1";
+            this.screen1.Size = new System.Drawing.Size(100, 37);
+            this.screen1.TabIndex = 5;
+            this.screen1.Text = "-";
+            this.screen1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // print1
+            // 
+            this.print1.Location = new System.Drawing.Point(255, 100);
+            this.print1.Name = "print1";
+            this.print1.Size = new System.Drawing.Size(100, 37);
+            this.print1.TabIndex = 4;
+            this.print1.Text = "-";
+            this.print1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // machineList
             // 
@@ -255,126 +302,79 @@
             this.machineList.Size = new System.Drawing.Size(250, 234);
             this.machineList.TabIndex = 1;
             // 
-            // mess5
+            // error1
             // 
-            this.mess5.AutoSize = true;
-            this.mess5.Location = new System.Drawing.Point(250, 50);
-            this.mess5.Name = "mess5";
-            this.mess5.Size = new System.Drawing.Size(111, 37);
-            this.mess5.TabIndex = 2;
-            this.mess5.Text = "Printer";
+            this.error1.AutoSize = true;
+            this.error1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.error1.ForeColor = System.Drawing.Color.Red;
+            this.error1.Location = new System.Drawing.Point(25, 150);
+            this.error1.Name = "error1";
+            this.error1.Size = new System.Drawing.Size(364, 37);
+            this.error1.TabIndex = 1;
+            this.error1.Text = "Error: Please select A-Z.";
+            this.error1.Visible = false;
             // 
-            // mess6
+            // outDisp
             // 
-            this.mess6.AutoSize = true;
-            this.mess6.Location = new System.Drawing.Point(375, 50);
-            this.mess6.Name = "mess6";
-            this.mess6.Size = new System.Drawing.Size(117, 37);
-            this.mess6.TabIndex = 3;
-            this.mess6.Text = "Screen";
+            this.outDisp.AutoSize = true;
+            this.outDisp.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.outDisp.Location = new System.Drawing.Point(425, 90);
+            this.outDisp.Name = "outDisp";
+            this.outDisp.Size = new System.Drawing.Size(27, 37);
+            this.outDisp.TabIndex = 2;
+            this.outDisp.Tag = "outDisp";
+            this.outDisp.Text = "-";
             // 
-            // print1
+            // jobSel
             // 
-            this.print1.Location = new System.Drawing.Point(255, 100);
-            this.print1.Name = "print1";
-            this.print1.Size = new System.Drawing.Size(100, 37);
-            this.print1.TabIndex = 4;
-            this.print1.Text = "-";
-            this.print1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.jobSel.Location = new System.Drawing.Point(35, 80);
+            this.jobSel.Name = "jobSel";
+            this.jobSel.Size = new System.Drawing.Size(246, 44);
+            this.jobSel.TabIndex = 3;
+            this.jobSel.Tag = "input";
+            this.jobSel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // screen1
+            // jobList
             // 
-            this.screen1.Location = new System.Drawing.Point(383, 100);
-            this.screen1.Name = "screen1";
-            this.screen1.Size = new System.Drawing.Size(100, 37);
-            this.screen1.TabIndex = 5;
-            this.screen1.Text = "-";
-            this.screen1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.jobList.FormattingEnabled = true;
+            this.jobList.ItemHeight = 37;
+            this.jobList.Location = new System.Drawing.Point(35, 200);
+            this.jobList.Name = "jobList";
+            this.jobList.Size = new System.Drawing.Size(500, 374);
+            this.jobList.TabIndex = 4;
+            this.jobList.Tag = "jobList";
             // 
-            // print2
+            // addButton
             // 
-            this.print2.Location = new System.Drawing.Point(255, 143);
-            this.print2.Name = "print2";
-            this.print2.Size = new System.Drawing.Size(100, 37);
-            this.print2.TabIndex = 6;
-            this.print2.Text = "-";
-            this.print2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.addButton.Location = new System.Drawing.Point(35, 600);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(245, 75);
+            this.addButton.TabIndex = 5;
+            this.addButton.Tag = "addBut";
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // screen2
+            // delButton
             // 
-            this.screen2.Location = new System.Drawing.Point(383, 143);
-            this.screen2.Name = "screen2";
-            this.screen2.Size = new System.Drawing.Size(100, 37);
-            this.screen2.TabIndex = 7;
-            this.screen2.Text = "-";
-            this.screen2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.delButton.Enabled = false;
+            this.delButton.Location = new System.Drawing.Point(300, 600);
+            this.delButton.Name = "delButton";
+            this.delButton.Size = new System.Drawing.Size(245, 75);
+            this.delButton.TabIndex = 6;
+            this.delButton.Tag = "delBut";
+            this.delButton.Text = "Delete";
+            this.delButton.UseVisualStyleBackColor = true;
             // 
-            // print3
+            // runBut
             // 
-            this.print3.Location = new System.Drawing.Point(255, 186);
-            this.print3.Name = "print3";
-            this.print3.Size = new System.Drawing.Size(100, 37);
-            this.print3.TabIndex = 8;
-            this.print3.Text = "-";
-            this.print3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.print3.Click += new System.EventHandler(this.label9_Click);
-            // 
-            // screen3
-            // 
-            this.screen3.Location = new System.Drawing.Point(383, 186);
-            this.screen3.Name = "screen3";
-            this.screen3.Size = new System.Drawing.Size(100, 37);
-            this.screen3.TabIndex = 9;
-            this.screen3.Text = "-";
-            this.screen3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // print4
-            // 
-            this.print4.Location = new System.Drawing.Point(255, 229);
-            this.print4.Name = "print4";
-            this.print4.Size = new System.Drawing.Size(100, 37);
-            this.print4.TabIndex = 10;
-            this.print4.Text = "-";
-            this.print4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // screen4
-            // 
-            this.screen4.Location = new System.Drawing.Point(383, 229);
-            this.screen4.Name = "screen4";
-            this.screen4.Size = new System.Drawing.Size(100, 37);
-            this.screen4.TabIndex = 11;
-            this.screen4.Text = "-";
-            this.screen4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // print5
-            // 
-            this.print5.Location = new System.Drawing.Point(255, 270);
-            this.print5.Name = "print5";
-            this.print5.Size = new System.Drawing.Size(100, 37);
-            this.print5.TabIndex = 12;
-            this.print5.Text = "-";
-            this.print5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.print5.Click += new System.EventHandler(this.label13_Click);
-            // 
-            // screen5
-            // 
-            this.screen5.Location = new System.Drawing.Point(383, 270);
-            this.screen5.Name = "screen5";
-            this.screen5.Size = new System.Drawing.Size(100, 37);
-            this.screen5.TabIndex = 13;
-            this.screen5.Text = "-";
-            this.screen5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // error3
-            // 
-            this.error3.AutoSize = true;
-            this.error3.ForeColor = System.Drawing.Color.Red;
-            this.error3.Location = new System.Drawing.Point(10, 325);
-            this.error3.Name = "error3";
-            this.error3.Size = new System.Drawing.Size(460, 37);
-            this.error3.TabIndex = 14;
-            this.error3.Text = "Error: Please select a machine.";
-            this.error3.Visible = false;
+            this.runBut.Location = new System.Drawing.Point(595, 600);
+            this.runBut.Name = "runBut";
+            this.runBut.Size = new System.Drawing.Size(515, 75);
+            this.runBut.TabIndex = 12;
+            this.runBut.Text = "Run";
+            this.runBut.UseVisualStyleBackColor = true;
+            this.runBut.Click += new System.EventHandler(this.runBut_Click);
             // 
             // baseForm
             // 
@@ -388,9 +388,9 @@
             this.Controls.Add(this.delButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.jobList);
-            this.Controls.Add(this.valSel);
+            this.Controls.Add(this.jobSel);
             this.Controls.Add(this.outDisp);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.error1);
             this.Controls.Add(this.mess1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -422,12 +422,12 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label inputDesc;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label error1;
+        //private System.Windows.Forms.Label error1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label mess1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label error1;
         private System.Windows.Forms.Label outDisp;
-        private System.Windows.Forms.TextBox valSel;
+        private System.Windows.Forms.TextBox jobSel;
         private System.Windows.Forms.ListBox jobList;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button delButton;
