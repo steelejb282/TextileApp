@@ -2,12 +2,13 @@
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace TextileApp
 {
     public partial class baseForm : Form
     {
-        SqlConnection data = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John\Source\Github\TextileApp\TextileApp\TextileSpecs.mdf;Integrated Security=True");
+        SqlConnection data = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John\Source\Github\TextileApp\TextileApp\TextileSpecs.mdf;Integrated Security=True;Connect Timeout=30");
         public int i;
         public int numShift;
         public int numMachine;
@@ -139,7 +140,7 @@ namespace TextileApp
             {
                 // Open access to the TextileSpecs database
                 data.Open();
-                
+
                 // Disable the aspects of the UI that should not be altered during the process
                 jobSel.Enabled = false;
                 shiftSel.Enabled = false;
@@ -199,81 +200,106 @@ namespace TextileApp
 
                 // Establish the Machines.  Create an array that accounts for the machines,
                 // their current job title, the printed specifications, and the display
-                // specifications, within a 5x5 table, including the Job Key and Job Value
-                Object[,] MachineTable = new Object[5, 6];
-                int curShift = 0; // debugging, only complete the first shift
-                
-                for (int mach=0;mach<5;mach++)
+                // specifications, within a 5x6 table, including the Job Key and Job Value
+                Object[,] MachineTable = new Object[5, 5];
+                int jobsRemaining = 1;
+
+                for (int curShift = 0; curShift < numShift; curShift++)
                 {
-                    if (machine[mach])
+                    while (jobsRemaining > 0)
                     {
-                        for (i=0;i<shiftSize;i++)
+                        for (i = 0; i < 5; i++)
                         {
-                            if (shiftTable[0,i] != -1)
+                            for (int j = 0; j < 5; j++)
                             {
-                                MachineTable[mach, 0] = shiftTable[0, i];
-                                MachineTable[mach, 1] = shiftTable[1, i];
-                                shiftTable[0, i] = -1;
-                                shiftTable[1, i] = -1;
-                                break;
+                                MachineTable[i, j] = "-";
                             }
                         }
-                    }
-                    else
-                    {
-                        MachineTable[mach, 0] = "-";
-                        MachineTable[mach, 1] = "-";
-                    }
-                }
 
-                SqlCommand cmd = data.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-
-                for (i=0;i<5;i++)
-                {
-                    if (MachineTable[i, 1].ToString() != "-")
-                    {
-                        cmd.CommandText = "SELECT * FROM Table WHERE specID = " + MachineTable[i, 1].ToString() + ";";
-                        cmd.ExecuteNonQuery();
-
-                        DataTable DT = new DataTable();
-                        SqlDataAdapter DA = new SqlDataAdapter(cmd);
-                        DA.Fill(DT);
-
-                        foreach (DataRow col in DT.Columns)
+                        for (int mach = 0; mach < 5; mach++)
                         {
-                            MachineTable[i, 2] = col["name"].ToString();
-                            MachineTable[i, 3] = col["print"].ToString();
-                            MachineTable[i, 4] = col["screen"].ToString();
-                            MachineTable[i, 5] = col["time"].ToString();
+                            if (machine[mach] == true)
+                            {
+                                for (i = 0; i < shiftSize; i++)
+                                {
+                                    MessageBox.Show(shiftTable[curShift * 2, i].ToString() + ". " + shiftTable[curShift * 2 + 1, i].ToString());
+                                    if (shiftTable[curShift*2, i] != -1)
+                                    {
+                                        MachineTable[mach, 0] = shiftTable[curShift*2, i];
+                                        MachineTable[mach, 1] = shiftTable[curShift*2+1, i];
+                                        shiftTable[curShift*2, i] = -1;
+                                        shiftTable[curShift*2+1, i] = -1;
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                MachineTable[mach, 0] = "-";
+                                MachineTable[mach, 1] = "-";
+                            }
+                        }
+
+                        SqlCommand cmd = data.CreateCommand();
+                        cmd.CommandType = CommandType.Text;
+
+                        for (i = 0; i < 5; i++)
+                        {
+                            if (MachineTable[i, 1] != (Object)"-")
+                            {
+                                cmd.CommandText = "SELECT * FROM \"Table\" WHERE specID = " + MachineTable[i, 1].ToString() + ";";
+                                cmd.ExecuteNonQuery();
+
+                                DataTable DT = new DataTable();
+                                SqlDataAdapter DA = new SqlDataAdapter(cmd);
+                                DA.Fill(DT);
+
+                                foreach (DataRow row in DT.Rows)
+                                {
+                                    MachineTable[i, 2] = row["name"].ToString();
+                                    MachineTable[i, 3] = row["print"].ToString();
+                                    MachineTable[i, 4] = row["screen"].ToString();
+                                }
+                            }
+                            else
+                            {
+                                MachineTable[i, 2] = "-";
+                                MachineTable[i, 3] = "-";
+                                MachineTable[i, 4] = "-";
+                            }
+                        }
+
+                        job1.Text = MachineTable[0, 0].ToString() + ". " + MachineTable[0, 2].ToString();
+                        job2.Text = MachineTable[1, 0].ToString() + ". " + MachineTable[1, 2].ToString();
+                        job3.Text = MachineTable[2, 0].ToString() + ". " + MachineTable[2, 2].ToString();
+                        job4.Text = MachineTable[3, 0].ToString() + ". " + MachineTable[3, 2].ToString();
+                        job5.Text = MachineTable[4, 0].ToString() + ". " + MachineTable[4, 2].ToString();
+
+                        print1.Text = MachineTable[0, 3].ToString();
+                        print2.Text = MachineTable[1, 3].ToString();
+                        print3.Text = MachineTable[2, 3].ToString();
+                        print4.Text = MachineTable[3, 3].ToString();
+                        print5.Text = MachineTable[4, 3].ToString();
+
+                        screen1.Text = MachineTable[0, 4].ToString();
+                        screen2.Text = MachineTable[1, 4].ToString();
+                        screen3.Text = MachineTable[2, 4].ToString();
+                        screen4.Text = MachineTable[3, 4].ToString();
+                        screen5.Text = MachineTable[4, 4].ToString();
+
+                        Application.DoEvents();
+                        Thread.Sleep(2000);
+
+                        jobsRemaining = 0;
+                        for (i = 0; i < shiftSize; i++)
+                        {
+                            if (shiftTable[curShift*2, i] != -1) jobsRemaining++;
                         }
                     }
-                    else
-                    {
-                        MachineTable[i, 2] = "-";
-                        MachineTable[i, 3] = "-";
-                        MachineTable[i, 4] = "-";
-                        MachineTable[i, 5] = "-";
-                    }
+                    MessageBox.Show("Shift " + (curShift + 1).ToString() + " has finished.");
                 }
 
-                job1.Text = MachineTable[0, 0].ToString() + ". " + MachineTable[0, 2].ToString();
-                job2.Text = MachineTable[1, 0].ToString() + ". " + MachineTable[1, 2].ToString();
-                job3.Text = MachineTable[2, 0].ToString() + ". " + MachineTable[2, 2].ToString();
-                job4.Text = MachineTable[3, 0].ToString() + ". " + MachineTable[3, 2].ToString();
-                job5.Text = MachineTable[4, 0].ToString() + ". " + MachineTable[4, 2].ToString();
-
-                print1.Text = MachineTable[0, 3].ToString();
-                print2.Text = MachineTable[1, 3].ToString();
-                print3.Text = MachineTable[2, 3].ToString();
-                print4.Text = MachineTable[3, 3].ToString();
-                print5.Text = MachineTable[4, 3].ToString();
-
-                screen1.Text = MachineTable[0, 3].ToString();
-                screen2.Text = MachineTable[1, 3].ToString();
-                screen3.Text = MachineTable[2, 3].ToString();
-                screen4.Text = MachineTable[3, 3].ToString();
-                screen5.Text = MachineTable[4, 3].ToString();
+                MessageBox.Show("All jobs have been completed.");
 
                 // Enable the aspects of the UI that should not be altered during the process
                 jobSel.Enabled = true;
