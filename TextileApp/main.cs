@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
 
 namespace TextileApp
 {
     public partial class baseForm : Form
     {
-        public int numJob = 0;
+        public int i;
         public int numShift;
         public int numMachine;
         
@@ -19,7 +19,9 @@ namespace TextileApp
         public string error1v1 = "Error: Please select A-Z.";
         public string error1v2 = "Error: Please assign a task.";
 
-        List<int> newJobs = new List<int>();
+        public bool inProgress = false;
+
+        public int MaxShift = 5;
 
         public baseForm()
         {
@@ -60,14 +62,7 @@ namespace TextileApp
                 {
                     // Add the new item to the job queue
                     JobTable.Items.Add(jobVal.ToUpper());
-                    inKey -= 64; // inKey -= 'A' + 1: Converts char to int starting at 1
-                    screen1.Text = numJob.ToString();
-                    screen2.Text = inKey.ToString();
-                    //JobList.createNode(numJob, inKey);
-                    numJob++;
                     error1.Visible = false;
-
-                    newJobs.Add(inKey);
                 }
                 else
                 {
@@ -82,7 +77,9 @@ namespace TextileApp
             bool[] pass = new bool[3];
 
             // Step 1: Check Job List
-            pass[0] = true;
+            if (JobTable.Items.Count > 0) pass[0] = true;
+            else pass[0] = false;
+
             // Step 2: Check Shifts
             shiftVal = shiftSel.Text;
 
@@ -90,7 +87,7 @@ namespace TextileApp
             {
                 int inShift = shiftVal[0];
 
-                if (inShift >= '2' && inShift <= '5')
+                if (inShift >= '2' && inShift <= '1'+MaxShift-1)
                 {
                     numShift = inShift - '2' + 2;
                     pass[1] = true;
@@ -107,7 +104,7 @@ namespace TextileApp
             numMachine = 0;
             pass[2] = false;
 
-            for (int i=0;i<machineList.Items.Count;i++)
+            for (i=0;i<machineList.Items.Count;i++)
             {
                 if (machineList.GetItemCheckState(i) == CheckState.Checked)
                 {
@@ -119,8 +116,9 @@ namespace TextileApp
 
             if (numMachine > 0) pass[2] = true;
 
-            // Step 4: Do Stuff
+            // Step 4: Start the application process
 
+            // Ensure that jobs are queued for completion
             if (pass[0]) error1.Visible = false;
             else
             {
@@ -128,37 +126,76 @@ namespace TextileApp
                 error1.Visible = true;
             }
 
+            // Ensure that shifts are selected
             if (pass[1]) error2.Visible = false;
             else error2.Visible = true;
 
+            // Ensure that machines have been selected
             if (pass[2]) error3.Visible = false;
             else error3.Visible = true;
 
+            // Only continue if all of the input parameters are acceptable
             if (pass[0] && pass[1] && pass[2])
             {
+                // Disable the aspects of the UI that should not be altered during the process
+                jobSel.Enabled = false;
+                shiftSel.Enabled = false;
+                addButton.Enabled = false;
+                delButton.Enabled = false;
+                JobTable.Enabled = false;
+                machineList.Enabled = false;
+                // Alter the Run Button to allow for Pausing
+                runButton.Text = "Pause";
+                inProgress = true;
 
-            }
-        }
+                // Receive input specification for Jobs, Shifts, and Machines
+                int numJob = JobTable.Items.Count;
+                int[,] fullJobArr = new int[numJob, 2];
+                string[] jobTitle = new string[numJob];
 
-        private void JobTable_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            delButton.Enabled = false;
+                // Establish master job pool that tracks Job ID and Job Value
 
-            for (int i=0;i<JobTable.Items.Count;i++)
-            {
-                if (JobTable.GetItemCheckState(i) == CheckState.Checked)
+                // Fill the array with Job IDs
+                for (i = 0; i < numJob; i++) fullJobArr[i, 0] = i;
+
+                // Populate the jobTitle array with job titles in preparation for determining the Job Value
+                i = 0;
+                foreach (Object job in JobTable.Items)
                 {
-                    delButton.Enabled = true;
-                    break;
+                    jobTitle[i] = job.ToString();
+                    i++;
                 }
+                // Populate the master array with Job Values corresponding to their ID
+                for (i = 0; i < numJob; i++)
+                {
+                    fullJobArr[i, 1] = jobTitle[i][0] - 64;
+                }
+
+                // Prepare the shifts
+                int shiftSize = (int)Math.Ceiling((double)numJob / (double)numShift);
+                int[,] shiftTable = new int[2 * numShift, shiftSize];
+
+                MessageBox.Show(shiftSize.ToString());
+
+                // Enable the aspects of the UI that should not be altered during the process
+                jobSel.Enabled = true;
+                shiftSel.Enabled = true;
+                addButton.Enabled = true;
+                delButton.Enabled = true;
+                JobTable.Enabled = true;
+                machineList.Enabled = true;
+                // Alter the Run Button to allow for Pausing
+                runButton.Text = "Run";
+                inProgress = false;
             }
         }
 
         private void delButton_Click(object sender, EventArgs e)
         {
             bool[] delete = new bool[JobTable.Items.Count];
+            error1.Visible = false;
 
-            for (int i = 0; i < JobTable.Items.Count; i++)
+            for (i = 0; i < JobTable.Items.Count; i++)
             {
                 delete[i] = false;
                 if (JobTable.GetItemCheckState(i) == CheckState.Checked)
@@ -166,7 +203,7 @@ namespace TextileApp
                     delete[i] = true;
                 }
             }
-            for (int i=JobTable.Items.Count-1;i>=0;i--)
+            for (i=JobTable.Items.Count-1;i>=0;i--)
             {
                 if (delete[i])
                 {

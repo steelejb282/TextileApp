@@ -34,7 +34,7 @@
             this.mess5 = new System.Windows.Forms.Label();
             this.mess6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.runBut = new System.Windows.Forms.Button();
+            this.runButton = new System.Windows.Forms.Button();
             this.error1 = new System.Windows.Forms.Label();
             this.jobSel = new System.Windows.Forms.TextBox();
             this.JobTable = new System.Windows.Forms.CheckedListBox();
@@ -112,7 +112,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.runBut);
+            this.panel1.Controls.Add(this.runButton);
             this.panel1.Controls.Add(this.error1);
             this.panel1.Controls.Add(this.jobSel);
             this.panel1.Controls.Add(this.JobTable);
@@ -124,15 +124,15 @@
             this.panel1.Size = new System.Drawing.Size(459, 580);
             this.panel1.TabIndex = 9;
             // 
-            // runBut
+            // runButton
             // 
-            this.runBut.Location = new System.Drawing.Point(272, 480);
-            this.runBut.Name = "runBut";
-            this.runBut.Size = new System.Drawing.Size(169, 75);
-            this.runBut.TabIndex = 12;
-            this.runBut.Text = "Run";
-            this.runBut.UseVisualStyleBackColor = true;
-            this.runBut.Click += new System.EventHandler(this.runBut_Click);
+            this.runButton.Location = new System.Drawing.Point(272, 480);
+            this.runButton.Name = "runButton";
+            this.runButton.Size = new System.Drawing.Size(169, 75);
+            this.runButton.TabIndex = 12;
+            this.runButton.Text = "Run";
+            this.runButton.UseVisualStyleBackColor = true;
+            this.runButton.Click += new System.EventHandler(this.runBut_Click);
             // 
             // error1
             // 
@@ -148,6 +148,7 @@
             // 
             // jobSel
             // 
+            this.jobSel.AcceptsReturn = true;
             this.jobSel.Location = new System.Drawing.Point(184, 63);
             this.jobSel.Name = "jobSel";
             this.jobSel.Size = new System.Drawing.Size(246, 44);
@@ -157,16 +158,26 @@
             // 
             // JobTable
             // 
+            this.JobTable.CheckOnClick = true;
             this.JobTable.FormattingEnabled = true;
+            this.JobTable.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J"});
             this.JobTable.Location = new System.Drawing.Point(15, 200);
             this.JobTable.Name = "JobTable";
             this.JobTable.Size = new System.Drawing.Size(240, 355);
             this.JobTable.TabIndex = 1;
-            this.JobTable.SelectedIndexChanged += new System.EventHandler(this.JobTable_SelectedIndexChanged);
             // 
             // delButton
             // 
-            this.delButton.Enabled = false;
             this.delButton.Location = new System.Drawing.Point(272, 281);
             this.delButton.Name = "delButton";
             this.delButton.Size = new System.Drawing.Size(169, 75);
@@ -213,10 +224,12 @@
             // 
             // shiftSel
             // 
+            this.shiftSel.AllowDrop = true;
             this.shiftSel.Location = new System.Drawing.Point(237, 63);
             this.shiftSel.Name = "shiftSel";
             this.shiftSel.Size = new System.Drawing.Size(235, 44);
             this.shiftSel.TabIndex = 0;
+            this.shiftSel.Text = "3";
             this.shiftSel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel3
@@ -348,6 +361,7 @@
             // 
             this.machineList.BackColor = System.Drawing.SystemColors.ControlDark;
             this.machineList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.machineList.CheckOnClick = true;
             this.machineList.FormattingEnabled = true;
             this.machineList.Items.AddRange(new object[] {
             "Machine 1",
@@ -362,6 +376,7 @@
             // 
             // baseForm
             // 
+            this.AcceptButton = this.addButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 610);
@@ -386,19 +401,6 @@
         private System.Windows.Forms.BindingSource tableBindingSource;
         private TextileSpecsDataSetTableAdapters.TableTableAdapter tableTableAdapter;
         private TextileSpecsDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.Button addBut;
-        private System.Windows.Forms.Button delBut;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.TextBox itemSel;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label outputVal;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label inputDesc;
-        private System.Windows.Forms.Label label3;
-        //private System.Windows.Forms.Label error1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label mess1;
         private System.Windows.Forms.Label error1;
         private System.Windows.Forms.TextBox jobSel;
@@ -410,7 +412,7 @@
         private System.Windows.Forms.Label error2;
         private System.Windows.Forms.TextBox shiftSel;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button runBut;
+        private System.Windows.Forms.Button runButton;
         private System.Windows.Forms.Label mess6;
         private System.Windows.Forms.Label mess5;
         private System.Windows.Forms.CheckedListBox machineList;
