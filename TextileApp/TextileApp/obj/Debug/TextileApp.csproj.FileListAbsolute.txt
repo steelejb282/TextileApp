@@ -1,0 +1,11 @@
+C:\Users\John\Source\Github\TextileApp\TextileApp\bin\Debug\TextileSpecs.mdf
+C:\Users\John\Source\Github\TextileApp\TextileApp\bin\Debug\TextileSpecs_log.ldf
+C:\Users\John\Source\Github\TextileApp\TextileApp\bin\Debug\TextileApp.exe.config
+C:\Users\John\Source\Github\TextileApp\TextileApp\bin\Debug\TextileApp.exe
+C:\Users\John\Source\Github\TextileApp\TextileApp\bin\Debug\TextileApp.pdb
+C:\Users\John\Source\Github\TextileApp\TextileApp\obj\Debug\TextileApp.csprojResolveAssemblyReference.cache
+C:\Users\John\Source\Github\TextileApp\TextileApp\obj\Debug\TextileApp.Properties.Resources.resources
+C:\Users\John\Source\Github\TextileApp\TextileApp\obj\Debug\TextileApp.csproj.GenerateResource.Cache
+C:\Users\John\Source\Github\TextileApp\TextileApp\obj\Debug\TextileApp.exe
+C:\Users\John\Source\Github\TextileApp\TextileApp\obj\Debug\TextileApp.pdb
+C:\Users\John\Source\Github\TextileApp\TextileApp\obj\Debug\TextileApp.baseForm.resources
