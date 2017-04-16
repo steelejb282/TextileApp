@@ -23,6 +23,7 @@ namespace TextileApp
         public bool inProgress = false;
 
         public int MaxShift = 5;
+        public int MaxMachine = 5;
 
         public baseForm()
         {
@@ -34,54 +35,90 @@ namespace TextileApp
             this.Validate();
             this.tableBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.textileSpecsDataSet);
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'textileSpecsDataSet.Table' table. You can move, or remove it, as needed.
-            this.tableTableAdapter.Fill(this.textileSpecsDataSet.Table);
-
+           this.tableTableAdapter.Fill(this.textileSpecsDataSet.Table);
         }
 
+        // Read the input from the job selection.  Raise error for inappropriate inputs
         private void addButton_Click(object sender, EventArgs e)
         {
+            // Pull the string in and clear the field
             jobVal = jobSel.Text;
             jobSel.Text = "";
 
+            // For the purposed of this project, only singular alphabetical characters
+            // should be input.  Ensure that the input is only one character in length
             if (jobVal.Length != 1)
             {
+                // Warns the user to provide proper inputs
                 error1.Text = error1v1;
                 error1.Visible = true;
             }
             else
             {
+                // Remove case sensivity by translating input to upper case
                 jobVal = jobVal.ToUpper();
+                // Convert the string into a char value
                 int inKey = jobVal[0];
 
+                // Ensure that the character is alphabetical
                 if (inKey >= 'A' && inKey <= 'Z')
                 {
                     // Add the new item to the job queue
                     JobTable.Items.Add(jobVal.ToUpper());
+                    // Refresh the warning state
                     error1.Visible = false;
                 }
                 else
                 {
+                    // Warns the user to provide a proper input
                     error1.Text = error1v1;
                     error1.Visible = true;
                 }
             }
         }
 
+        // Remove the items that are check within the input job array
+        private void delButton_Click(object sender, EventArgs e)
+        {
+            // Create a bool array to track the state of each item
+            bool[] delete = new bool[JobTable.Items.Count];
+            error1.Visible = false;
+
+            for (i = 0; i < JobTable.Items.Count; i++)
+            {
+                // Preset the item to false (unchecked).  Check the state and revise as
+                // needed
+                delete[i] = false;
+                if (JobTable.GetItemCheckState(i) == CheckState.Checked) delete[i] = true;
+            }
+
+            // Run through delete array, and delete the flaged values from the array.
+            // Working backwards ensures that the correct items are removed.
+            for (i = JobTable.Items.Count - 1; i >= 0; i--)
+            {
+                if (delete[i])
+                {
+                    JobTable.Items.RemoveAt(i);
+                }
+            }
+        }
+
+        // Operate the program after receiving the input parameters
         private void runBut_Click(object sender, EventArgs e)
         {
+            // Establish a gateway array for each of the input criteria
             bool[] pass = new bool[3];
 
-            // Step 1: Check Job List
+            // Part 1: Ensure that there are jobs listed within the input array
             if (JobTable.Items.Count > 0) pass[0] = true;
             else pass[0] = false;
 
-            // Step 2: Check Shifts
+            // Part 2: Ensure that an appropriate number of shifts have been selected
+            // For the sake of this project, the number ranges from 2-5
             shiftVal = shiftSel.Text;
 
             if (shiftVal.Length == 1)
@@ -153,14 +190,9 @@ namespace TextileApp
                 inProgress = true;
 
                 // Receive input specification for Jobs, Shifts, and Machines
-                int numJob = JobTable.Items.Count;
-                int[,] fullJobArr = new int[numJob, 2];
-                string[] jobTitle = new string[numJob];
-
-                // Establish master job pool that tracks Job ID and Job Value
-
-                // Fill the array with Job IDs
-                for (i = 0; i < numJob; i++) fullJobArr[i, 0] = i;
+                int numJob = JobTable.Items.Count;      // Easier access to the number of jobs
+                string[] jobTitle = new string[numJob]; // Temporary string array to access information from pool
+                int[] jobValArray = new int[numJob];    // Converts the string array into int for access to database
 
                 // Populate the jobTitle array with job titles in preparation for determining the Job Value
                 i = 0;
@@ -173,42 +205,54 @@ namespace TextileApp
                 // Populate the master array with Job Values corresponding to their ID
                 for (i = 0; i < numJob; i++)
                 {
-                    fullJobArr[i, 1] = jobTitle[i][0] - 64;
+                    jobValArray[i] = jobTitle[i][0] - 64;
                 }
 
                 // Prepare the shifts
                 int shiftSize = (int)Math.Ceiling((double)numJob / (double)numShift);
-                int[,] shiftTable = new int[2 * numShift, shiftSize];
+                int[,] shiftTable = new int[shiftSize, numShift];
 
-                // Assign jobs to shifts - Even columns refer to the Job Key, Odd columns refer to the Job Value
+                // Null the shiftTable with -1
                 for (i = 0; i < shiftSize; i++)
                 {
                     for (int j = 0; j < numShift; j++)
                     {
-                        if (i * numShift + j >= numJob)
-                        {
-                            shiftTable[j * 2, i] = -1;
-                            shiftTable[j * 2 + 1, i] = -1;
-                        }
-                        else
-                        {
-                            shiftTable[j * 2, i] = fullJobArr[i * numShift + j, 0];
-                            shiftTable[j * 2 + 1, i] = fullJobArr[i * numShift + j, 1];
-                        }
+                        shiftTable[i, j] = -1;
                     }
+                }
+
+                // Assign Job Keys to each shift
+                int row;
+                int col;
+                for (i = 0; i < numJob; i++)
+                {
+                    row = (int)Math.Floor((double)i / (double)numShift);
+                    col = (i + 1) % numShift;
+                    shiftTable[row, col] = i;
                 }
 
                 // Establish the Machines.  Create an array that accounts for the machines,
                 // their current job title, the printed specifications, and the display
-                // specifications, within a 5x6 table, including the Job Key and Job Value
-                Object[,] MachineTable = new Object[5, 5];
-                int jobsRemaining = 1;
+                // specifications, within a 5x5 table, including the Job Key and Job Value
+                Object[,] MachineTable = new Object[MaxMachine, 5];
+                int jobsRemaining;
+
+                //int curShift = 0;
 
                 for (int curShift = 0; curShift < numShift; curShift++)
                 {
+
+                    jobsRemaining = 0;
+                    for (i = 0; i < shiftSize; i++)
+                    {
+                        if (shiftTable[i, curShift] != -1) jobsRemaining++;
+                    }
+
                     while (jobsRemaining > 0)
                     {
-                        for (i = 0; i < 5; i++)
+                        // Prepare the default output text for the machine table
+                        // For machines that aren't in use, their categories should be empty
+                        for (i = 0; i < MaxMachine; i++)
                         {
                             for (int j = 0; j < 5; j++)
                             {
@@ -216,19 +260,23 @@ namespace TextileApp
                             }
                         }
 
-                        for (int mach = 0; mach < 5; mach++)
+                        // Assign jobs to each active machine from the current shift
+                        for (int mach = 0; mach < MaxMachine; mach++)
                         {
+                            // If the selected machine is active, select the first non-nulled (! -1) job from 
+                            // the current shift
                             if (machine[mach] == true)
                             {
+                                // Run through the length of the current shift (shiftSize), searching
+                                // for non-nulled jobs
                                 for (i = 0; i < shiftSize; i++)
                                 {
-                                    MessageBox.Show(shiftTable[curShift * 2, i].ToString() + ". " + shiftTable[curShift * 2 + 1, i].ToString());
-                                    if (shiftTable[curShift*2, i] != -1)
+
+                                    if (shiftTable[i, curShift] != -1)
                                     {
-                                        MachineTable[mach, 0] = shiftTable[curShift*2, i];
-                                        MachineTable[mach, 1] = shiftTable[curShift*2+1, i];
-                                        shiftTable[curShift*2, i] = -1;
-                                        shiftTable[curShift*2+1, i] = -1;
+                                        MachineTable[mach, 0] = shiftTable[i, curShift];
+                                        MachineTable[mach, 1] = jobValArray[shiftTable[i, curShift]];
+                                        shiftTable[i, curShift] = -1;
                                         break;
                                     }
                                 }
@@ -254,11 +302,11 @@ namespace TextileApp
                                 SqlDataAdapter DA = new SqlDataAdapter(cmd);
                                 DA.Fill(DT);
 
-                                foreach (DataRow row in DT.Rows)
+                                foreach (DataRow ROW in DT.Rows)
                                 {
-                                    MachineTable[i, 2] = row["name"].ToString();
-                                    MachineTable[i, 3] = row["print"].ToString();
-                                    MachineTable[i, 4] = row["screen"].ToString();
+                                    MachineTable[i, 2] = ROW["name"].ToString();
+                                    MachineTable[i, 3] = ROW["print"].ToString();
+                                    MachineTable[i, 4] = ROW["screen"].ToString();
                                 }
                             }
                             else
@@ -269,6 +317,8 @@ namespace TextileApp
                             }
                         }
 
+                        // I beleive that there has to be a better way to do this, but I
+                        // haven't found or learned the method yet
                         job1.Text = MachineTable[0, 0].ToString() + ". " + MachineTable[0, 2].ToString();
                         job2.Text = MachineTable[1, 0].ToString() + ". " + MachineTable[1, 2].ToString();
                         job3.Text = MachineTable[2, 0].ToString() + ". " + MachineTable[2, 2].ToString();
@@ -293,9 +343,13 @@ namespace TextileApp
                         jobsRemaining = 0;
                         for (i = 0; i < shiftSize; i++)
                         {
-                            if (shiftTable[curShift*2, i] != -1) jobsRemaining++;
+                            if (shiftTable[i, curShift] != -1) jobsRemaining++;
                         }
+                        MessageBox.Show("Jobs Remaining: " + jobsRemaining.ToString());
                     }
+
+                    // I had intended to develop a method to remove the jobs from the input
+                    // array as they were completed, but I doubt that I'll have the time
                     MessageBox.Show("Shift " + (curShift + 1).ToString() + " has finished.");
                 }
 
@@ -313,28 +367,29 @@ namespace TextileApp
                 inProgress = false;
 
                 data.Close();
-            }
-        }
 
-        private void delButton_Click(object sender, EventArgs e)
-        {
-            bool[] delete = new bool[JobTable.Items.Count];
-            error1.Visible = false;
+                for (i = 0; i < numJob; i++)
+                {
+                    JobTable.Items.RemoveAt(0);
+                }
 
-            for (i = 0; i < JobTable.Items.Count; i++)
-            {
-                delete[i] = false;
-                if (JobTable.GetItemCheckState(i) == CheckState.Checked)
-                {
-                    delete[i] = true;
-                }
-            }
-            for (i=JobTable.Items.Count-1;i>=0;i--)
-            {
-                if (delete[i])
-                {
-                    JobTable.Items.RemoveAt(i);
-                }
+                job1.Text = "-";
+                job2.Text = "-";
+                job3.Text = "-";
+                job4.Text = "-";
+                job5.Text = "-";
+
+                print1.Text = "-";
+                print2.Text = "-";
+                print3.Text = "-";
+                print4.Text = "-";
+                print5.Text = "-";
+
+                screen1.Text = "-";
+                screen2.Text = "-";
+                screen3.Text = "-";
+                screen4.Text = "-";
+                screen5.Text = "-";
             }
         }
     }
