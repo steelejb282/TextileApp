@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Threading;
 
 namespace TextileApp
-{
+{ 
     public partial class baseForm : Form
     {
         // General use variables
