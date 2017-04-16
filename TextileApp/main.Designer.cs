@@ -62,8 +62,8 @@
             this.screen1 = new System.Windows.Forms.Label();
             this.print1 = new System.Windows.Forms.Label();
             this.machineList = new System.Windows.Forms.CheckedListBox();
-            this.dataAddress = new System.Windows.Forms.Label();
             this.mess8 = new System.Windows.Forms.Label();
+            this.dataAddress = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -444,16 +444,6 @@
             this.machineList.Size = new System.Drawing.Size(117, 234);
             this.machineList.TabIndex = 1;
             // 
-            // dataAddress
-            // 
-            this.dataAddress.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataAddress.Location = new System.Drawing.Point(20, 653);
-            this.dataAddress.Name = "dataAddress";
-            this.dataAddress.Size = new System.Drawing.Size(1015, 43);
-            this.dataAddress.TabIndex = 12;
-            this.dataAddress.Text = "C:\\Users\\John\\Source\\Github\\TextileApp\\TextileApp\\TextileSpecs.mdf\r\n";
-            this.dataAddress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // mess8
             // 
             this.mess8.AutoSize = true;
@@ -463,14 +453,22 @@
             this.mess8.TabIndex = 13;
             this.mess8.Text = "Location of .mdf file within memory:";
             // 
+            // dataAddress
+            // 
+            this.dataAddress.Location = new System.Drawing.Point(27, 645);
+            this.dataAddress.Name = "dataAddress";
+            this.dataAddress.Size = new System.Drawing.Size(1003, 44);
+            this.dataAddress.TabIndex = 14;
+            this.dataAddress.Text = "C:\\Users\\John\\Source\\Github\\TextileApp\\TextileApp\\TextileSpecs.mdf";
+            // 
             // baseForm
             // 
             this.AcceptButton = this.addButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 725);
-            this.Controls.Add(this.mess8);
             this.Controls.Add(this.dataAddress);
+            this.Controls.Add(this.mess8);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -527,8 +525,8 @@
         private System.Windows.Forms.Label job2;
         private System.Windows.Forms.Label job1;
         private System.Windows.Forms.Label mess5;
-        private System.Windows.Forms.Label dataAddress;
         private System.Windows.Forms.Label mess8;
+        private System.Windows.Forms.TextBox dataAddress;
     }
 }
 
