@@ -8,9 +8,6 @@ namespace TextileApp
 {
     public partial class baseForm : Form
     {
-        // The connection to the mock database
-        SqlConnection data = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\John\Source\Github\TextileApp\TextileApp\TextileSpecs.mdf;Integrated Security=True;Connect Timeout=30");
-
         // General use variables
         public int i;           // Often used for tallying for loops
         public int numShift;    // The number of shifts
@@ -192,6 +189,9 @@ namespace TextileApp
                 //
                 // STEP 0: Establish opening parameters
                 //
+                // The connection to the mock database
+                String address = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + dataAddress.Text + ";Integrated Security = True; Connect Timeout = 30";
+                SqlConnection data = new SqlConnection(@address);
 
                 // Open access to the TextileSpecs database
                 data.Open();
@@ -204,6 +204,7 @@ namespace TextileApp
                 JobTable.Enabled = false;
                 machineList.Enabled = false;
                 runButton.Enabled = false;      // Edit to allow for pausing in future revisions
+                dataAddress.Enabled = false;
 
                 // Receive input specification for Jobs, Shifts, and Machines
                 int numJob = JobTable.Items.Count;      // Easier access to the number of jobs
@@ -391,6 +392,7 @@ namespace TextileApp
                 JobTable.Enabled = true;
                 machineList.Enabled = true;
                 runButton.Enabled = true;
+                dataAddress.Enabled = true;
 
                 data.Close();
 
