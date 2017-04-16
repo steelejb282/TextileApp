@@ -44,6 +44,12 @@
             this.error2 = new System.Windows.Forms.Label();
             this.shiftSel = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.job5 = new System.Windows.Forms.Label();
+            this.job4 = new System.Windows.Forms.Label();
+            this.job3 = new System.Windows.Forms.Label();
+            this.job2 = new System.Windows.Forms.Label();
+            this.job1 = new System.Windows.Forms.Label();
+            this.mess5 = new System.Windows.Forms.Label();
             this.error3 = new System.Windows.Forms.Label();
             this.screen5 = new System.Windows.Forms.Label();
             this.print5 = new System.Windows.Forms.Label();
@@ -56,12 +62,8 @@
             this.screen1 = new System.Windows.Forms.Label();
             this.print1 = new System.Windows.Forms.Label();
             this.machineList = new System.Windows.Forms.CheckedListBox();
-            this.job5 = new System.Windows.Forms.Label();
-            this.job4 = new System.Windows.Forms.Label();
-            this.job3 = new System.Windows.Forms.Label();
-            this.job2 = new System.Windows.Forms.Label();
-            this.job1 = new System.Windows.Forms.Label();
-            this.mess5 = new System.Windows.Forms.Label();
+            this.dataAddress = new System.Windows.Forms.Label();
+            this.mess8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -270,6 +272,60 @@
             this.panel3.Size = new System.Drawing.Size(545, 378);
             this.panel3.TabIndex = 11;
             // 
+            // job5
+            // 
+            this.job5.Location = new System.Drawing.Point(125, 270);
+            this.job5.Name = "job5";
+            this.job5.Size = new System.Drawing.Size(100, 37);
+            this.job5.TabIndex = 20;
+            this.job5.Text = "-";
+            this.job5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // job4
+            // 
+            this.job4.Location = new System.Drawing.Point(125, 229);
+            this.job4.Name = "job4";
+            this.job4.Size = new System.Drawing.Size(100, 37);
+            this.job4.TabIndex = 19;
+            this.job4.Text = "-";
+            this.job4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // job3
+            // 
+            this.job3.Location = new System.Drawing.Point(125, 186);
+            this.job3.Name = "job3";
+            this.job3.Size = new System.Drawing.Size(100, 37);
+            this.job3.TabIndex = 18;
+            this.job3.Text = "-";
+            this.job3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // job2
+            // 
+            this.job2.Location = new System.Drawing.Point(125, 143);
+            this.job2.Name = "job2";
+            this.job2.Size = new System.Drawing.Size(100, 37);
+            this.job2.TabIndex = 17;
+            this.job2.Text = "-";
+            this.job2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // job1
+            // 
+            this.job1.Location = new System.Drawing.Point(125, 100);
+            this.job1.Name = "job1";
+            this.job1.Size = new System.Drawing.Size(100, 37);
+            this.job1.TabIndex = 16;
+            this.job1.Text = "-";
+            this.job1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // mess5
+            // 
+            this.mess5.Location = new System.Drawing.Point(125, 50);
+            this.mess5.Name = "mess5";
+            this.mess5.Size = new System.Drawing.Size(100, 37);
+            this.mess5.TabIndex = 15;
+            this.mess5.Text = "Job";
+            this.mess5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // error3
             // 
             this.error3.AutoSize = true;
@@ -388,66 +444,33 @@
             this.machineList.Size = new System.Drawing.Size(117, 234);
             this.machineList.TabIndex = 1;
             // 
-            // job5
+            // dataAddress
             // 
-            this.job5.Location = new System.Drawing.Point(125, 270);
-            this.job5.Name = "job5";
-            this.job5.Size = new System.Drawing.Size(100, 37);
-            this.job5.TabIndex = 20;
-            this.job5.Text = "-";
-            this.job5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dataAddress.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataAddress.Location = new System.Drawing.Point(20, 653);
+            this.dataAddress.Name = "dataAddress";
+            this.dataAddress.Size = new System.Drawing.Size(1015, 43);
+            this.dataAddress.TabIndex = 12;
+            this.dataAddress.Text = "C:\\Users\\John\\Source\\Github\\TextileApp\\TextileApp\\TextileSpecs.mdf\r\n";
+            this.dataAddress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // job4
+            // mess8
             // 
-            this.job4.Location = new System.Drawing.Point(125, 229);
-            this.job4.Name = "job4";
-            this.job4.Size = new System.Drawing.Size(100, 37);
-            this.job4.TabIndex = 19;
-            this.job4.Text = "-";
-            this.job4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // job3
-            // 
-            this.job3.Location = new System.Drawing.Point(125, 186);
-            this.job3.Name = "job3";
-            this.job3.Size = new System.Drawing.Size(100, 37);
-            this.job3.TabIndex = 18;
-            this.job3.Text = "-";
-            this.job3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // job2
-            // 
-            this.job2.Location = new System.Drawing.Point(125, 143);
-            this.job2.Name = "job2";
-            this.job2.Size = new System.Drawing.Size(100, 37);
-            this.job2.TabIndex = 17;
-            this.job2.Text = "-";
-            this.job2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // job1
-            // 
-            this.job1.Location = new System.Drawing.Point(125, 100);
-            this.job1.Name = "job1";
-            this.job1.Size = new System.Drawing.Size(100, 37);
-            this.job1.TabIndex = 16;
-            this.job1.Text = "-";
-            this.job1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // mess5
-            // 
-            this.mess5.Location = new System.Drawing.Point(125, 50);
-            this.mess5.Name = "mess5";
-            this.mess5.Size = new System.Drawing.Size(100, 37);
-            this.mess5.TabIndex = 15;
-            this.mess5.Text = "Job";
-            this.mess5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.mess8.AutoSize = true;
+            this.mess8.Location = new System.Drawing.Point(20, 602);
+            this.mess8.Name = "mess8";
+            this.mess8.Size = new System.Drawing.Size(520, 37);
+            this.mess8.TabIndex = 13;
+            this.mess8.Text = "Location of .mdf file within memory:";
             // 
             // baseForm
             // 
             this.AcceptButton = this.addButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1054, 610);
+            this.ClientSize = new System.Drawing.Size(1054, 725);
+            this.Controls.Add(this.mess8);
+            this.Controls.Add(this.dataAddress);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -460,6 +483,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -503,6 +527,8 @@
         private System.Windows.Forms.Label job2;
         private System.Windows.Forms.Label job1;
         private System.Windows.Forms.Label mess5;
+        private System.Windows.Forms.Label dataAddress;
+        private System.Windows.Forms.Label mess8;
     }
 }
 
