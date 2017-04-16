@@ -31,8 +31,8 @@
             this.mess1 = new System.Windows.Forms.Label();
             this.mess3 = new System.Windows.Forms.Label();
             this.mess4 = new System.Windows.Forms.Label();
-            this.mess5 = new System.Windows.Forms.Label();
             this.mess6 = new System.Windows.Forms.Label();
+            this.mess7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.runButton = new System.Windows.Forms.Button();
             this.error1 = new System.Windows.Forms.Label();
@@ -56,6 +56,12 @@
             this.screen1 = new System.Windows.Forms.Label();
             this.print1 = new System.Windows.Forms.Label();
             this.machineList = new System.Windows.Forms.CheckedListBox();
+            this.job5 = new System.Windows.Forms.Label();
+            this.job4 = new System.Windows.Forms.Label();
+            this.job3 = new System.Windows.Forms.Label();
+            this.job2 = new System.Windows.Forms.Label();
+            this.job1 = new System.Windows.Forms.Label();
+            this.mess5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -90,23 +96,25 @@
             this.mess4.TabIndex = 0;
             this.mess4.Text = "Select the machines to be used:";
             // 
-            // mess5
-            // 
-            this.mess5.AutoSize = true;
-            this.mess5.Location = new System.Drawing.Point(250, 50);
-            this.mess5.Name = "mess5";
-            this.mess5.Size = new System.Drawing.Size(111, 37);
-            this.mess5.TabIndex = 2;
-            this.mess5.Text = "Printer";
-            // 
             // mess6
             // 
             this.mess6.AutoSize = true;
-            this.mess6.Location = new System.Drawing.Point(375, 50);
+            this.mess6.Location = new System.Drawing.Point(250, 50);
             this.mess6.Name = "mess6";
-            this.mess6.Size = new System.Drawing.Size(117, 37);
-            this.mess6.TabIndex = 3;
-            this.mess6.Text = "Screen";
+            this.mess6.Size = new System.Drawing.Size(111, 37);
+            this.mess6.TabIndex = 2;
+            this.mess6.Text = "Printer";
+            this.mess6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // mess7
+            // 
+            this.mess7.AutoSize = true;
+            this.mess7.Location = new System.Drawing.Point(375, 50);
+            this.mess7.Name = "mess7";
+            this.mess7.Size = new System.Drawing.Size(117, 37);
+            this.mess7.TabIndex = 3;
+            this.mess7.Text = "Screen";
+            this.mess7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
@@ -236,6 +244,12 @@
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.job5);
+            this.panel3.Controls.Add(this.job4);
+            this.panel3.Controls.Add(this.job3);
+            this.panel3.Controls.Add(this.job2);
+            this.panel3.Controls.Add(this.job1);
+            this.panel3.Controls.Add(this.mess5);
             this.panel3.Controls.Add(this.error3);
             this.panel3.Controls.Add(this.screen5);
             this.panel3.Controls.Add(this.print5);
@@ -247,8 +261,8 @@
             this.panel3.Controls.Add(this.print2);
             this.panel3.Controls.Add(this.screen1);
             this.panel3.Controls.Add(this.print1);
+            this.panel3.Controls.Add(this.mess7);
             this.panel3.Controls.Add(this.mess6);
-            this.panel3.Controls.Add(this.mess5);
             this.panel3.Controls.Add(this.machineList);
             this.panel3.Controls.Add(this.mess4);
             this.panel3.Location = new System.Drawing.Point(490, 217);
@@ -364,15 +378,69 @@
             this.machineList.CheckOnClick = true;
             this.machineList.FormattingEnabled = true;
             this.machineList.Items.AddRange(new object[] {
-            "Machine 1",
-            "Machine 2",
-            "Machine 3",
-            "Machine 4",
-            "Machine 5"});
+            "M1",
+            "M2",
+            "M3",
+            "M4",
+            "M5"});
             this.machineList.Location = new System.Drawing.Point(7, 96);
             this.machineList.Name = "machineList";
-            this.machineList.Size = new System.Drawing.Size(229, 234);
+            this.machineList.Size = new System.Drawing.Size(117, 234);
             this.machineList.TabIndex = 1;
+            // 
+            // job5
+            // 
+            this.job5.Location = new System.Drawing.Point(125, 270);
+            this.job5.Name = "job5";
+            this.job5.Size = new System.Drawing.Size(100, 37);
+            this.job5.TabIndex = 20;
+            this.job5.Text = "-";
+            this.job5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // job4
+            // 
+            this.job4.Location = new System.Drawing.Point(125, 229);
+            this.job4.Name = "job4";
+            this.job4.Size = new System.Drawing.Size(100, 37);
+            this.job4.TabIndex = 19;
+            this.job4.Text = "-";
+            this.job4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // job3
+            // 
+            this.job3.Location = new System.Drawing.Point(125, 186);
+            this.job3.Name = "job3";
+            this.job3.Size = new System.Drawing.Size(100, 37);
+            this.job3.TabIndex = 18;
+            this.job3.Text = "-";
+            this.job3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // job2
+            // 
+            this.job2.Location = new System.Drawing.Point(125, 143);
+            this.job2.Name = "job2";
+            this.job2.Size = new System.Drawing.Size(100, 37);
+            this.job2.TabIndex = 17;
+            this.job2.Text = "-";
+            this.job2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // job1
+            // 
+            this.job1.Location = new System.Drawing.Point(125, 100);
+            this.job1.Name = "job1";
+            this.job1.Size = new System.Drawing.Size(100, 37);
+            this.job1.TabIndex = 16;
+            this.job1.Text = "-";
+            this.job1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // mess5
+            // 
+            this.mess5.Location = new System.Drawing.Point(125, 50);
+            this.mess5.Name = "mess5";
+            this.mess5.Size = new System.Drawing.Size(100, 37);
+            this.mess5.TabIndex = 15;
+            this.mess5.Text = "Job";
+            this.mess5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // baseForm
             // 
@@ -413,8 +481,8 @@
         private System.Windows.Forms.TextBox shiftSel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button runButton;
+        private System.Windows.Forms.Label mess7;
         private System.Windows.Forms.Label mess6;
-        private System.Windows.Forms.Label mess5;
         private System.Windows.Forms.CheckedListBox machineList;
         private System.Windows.Forms.Label mess4;
         private System.Windows.Forms.Label screen5;
@@ -429,6 +497,12 @@
         private System.Windows.Forms.Label print1;
         private System.Windows.Forms.Label error3;
         private System.Windows.Forms.CheckedListBox JobTable;
+        private System.Windows.Forms.Label job5;
+        private System.Windows.Forms.Label job4;
+        private System.Windows.Forms.Label job3;
+        private System.Windows.Forms.Label job2;
+        private System.Windows.Forms.Label job1;
+        private System.Windows.Forms.Label mess5;
     }
 }
 
